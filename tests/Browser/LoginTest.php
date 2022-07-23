@@ -19,8 +19,9 @@ class LoginTest extends DuskTestCase
             $browser->visit('/login')
                 ->type('email', 'admin@mail.com')
                 ->type('password', '123456')
-                ->press('Login')
-                ->assertSee('Dashboard');
+                ->press(__('Login'))
+
+                ->assertSee(trans('web.dashboard'));
         });
     }
 }

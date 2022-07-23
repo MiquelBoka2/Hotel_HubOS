@@ -1,0 +1,68 @@
+
+
+.dataTables_wrapper .dataTables_filter input {
+    background-color: white!important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button{
+    padding: 0 10px!important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    color: #46484d !important;
+    border: 1px solid #46484d !important;
+    background: white!important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+    color: white!important;
+    border: 1px solid white!important;
+    background: #46484d !important;
+}
+
+.dataTables_paginate.paging_simple_numbers{
+    margin-top: 10px;
+}
+
+.btn-outline-info:hover{
+    color:white;
+}
+
+.modal-header .close {
+    margin: 0;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+tr{
+    background: white!important;
+}
+
+td a.send_push>.fa-paper-plane{
+    margin-left:8px;
+}
+
+td div>a.btn{
+    display:flex;
+    align-items:center;
+    margin-right:10px;
+    font-size:1em;
+}
+
+td div>a.send_push{
+    font-size:1.2em;
+    font-weight:bold;
+}
+
+.container_actions{
+    width:100%!important;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-wrap:wrap;
+    align-content:center;
+}
