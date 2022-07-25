@@ -31,9 +31,13 @@ return [
 
     'dashboard'     => 'Dashboard',
 
+    'in'            => 'in',
+
 
 
     'hotel'         => 'Hotel|Hotels',
+    'room'          => 'Room|Rooms',
+
     'id'            => 'ID',
     'name'          => 'Name',
     'address'       => 'Address',
@@ -41,7 +45,14 @@ return [
     'country'       => 'Country',
     'postal_code'   => 'Postal Code',
     'email'         => 'Email',
-    'phone'         => 'Phone'
+    'phone'         => 'Phone',
+    'capacity'      => 'Capacity',
+    'status'        => 'Status',
+
+    'floor'         => 'Floor',
+    'free'          => 'Free',
+    'occupied'      => 'Occupied',
+
 
 
 ];

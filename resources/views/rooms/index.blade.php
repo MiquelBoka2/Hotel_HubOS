@@ -10,53 +10,68 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="page-header">
-                        {{ trans_choice('web.hotel',2) }}
+                        {{ trans_choice('web.room',2) }} @if($hotel_id>0) {{' '.trans('web.in')." ".$hotel->name}}@endif
                     </h1>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <a style='margin-bottom:20px;' href="{{route('hotels.create')}}" class='btn btn-primary'>{{ trans('web.create', array('attribute'=> strtolower(trans_choice('web.hotel',1))))}}</a>
+                            @if($hotel_id>0)
+                                <a style='margin-bottom:20px;' href="{{route('rooms.create_hotel',['hotel_id'=>$hotel_id])}}" class='btn btn-primary'>{{ trans('web.create', array('attribute'=> strtolower(trans_choice('web.room',1))))}}</a>
+                            @else
+                                <a style='margin-bottom:20px;' href="{{route('rooms.create')}}" class='btn btn-primary'>{{ trans('web.create', array('attribute'=> strtolower(trans_choice('web.room',1))))}}</a>
+                            @endif
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            @if ($hotels->count())
+                            @if ($rooms->count())
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover datatables">
                                         <thead>
                                         <tr>
                                             <th>{{trans('web.id')}}</th>
+                                            <th>{{trans_choice('web.hotel',1)}}</th>
                                             <th>{{trans('web.name')}}</th>
-                                            <th>{{trans('web.address')}}</th>
-                                            <th>{{trans('web.city')}}</th>
+                                            <th>{{trans('web.capacity')}}</th>
+                                            <th>{{trans('web.status')}}</th>
                                             <th>{{trans('web.options')}}</th>
                                         </tr>
                                         </thead>
 
                                         <tbody>
-                                        @foreach ($hotels as $hotel)
+                                        <?php $status = [trans('web.free'),trans('web.occupied')];?>
+                                        @foreach ($rooms as $room)
                                             <tr>
                                                 <td>
-                                                    {{$hotel->id}}
+                                                    {{$room->id}}
                                                 </td>
                                                 <td>
-                                                    {{$hotel->name}}
+                                                    {{$room->hotel->name}}
                                                 </td>
                                                 <td>
-                                                    {{$hotel->street}}
+                                                    {{$room->name}}
+                                                </td>
+                                                <td class="text-center">
+                                                    {{$room->capacity}}
                                                 </td>
                                                 <td>
-                                                    {{$hotel->city}}
+                                                    {{$status[$room->status]}}
                                                 </td>
                                                 <td>
-                                                    <a href="{{route('hotels.rooms', array($hotel->id))}}"  class="btn btn-outline-success btn-sm action-btn edit" id="rooms{{$hotel->id}}">{{trans_choice('web.room',2)}}</a>
+                                                    @if($hotel_id > 0)
+                                                        <a href="{{route('rooms.edit_hotel', array('id'=>$room->id,'hotel_id'=>$hotel_id))}}"  class="btn btn-outline-info btn-sm action-btn edit" id="edit{{$room->id}}"><i class="fas fa-edit"></i></a>
 
-                                                    <a href="{{route('hotels.edit', array($hotel->id))}}"  class="btn btn-outline-info btn-sm action-btn edit" id="edit{{$hotel->id}}"><i class="fas fa-edit"></i></a>
+                                                        <a href="#" id_to_del='{{$room->id}}' class="btn delperm btn-outline-danger btn-sm action-btn delete" id="delete{{$room->id}}"><i class="fas fa-trash-alt"></i></a>
+                                                        {{ Form::open(array('method' => 'DELETE', 'route' => array('rooms.destroy_hotel', $room->id,$hotel_id), 'id' => 'del_'.$room->id, 'name' => 'del_'.$room->id)) }}
+                                                        {{ Form::close() }}
+                                                    @else
+                                                        <a href="{{route('rooms.edit', array($room->id))}}"  class="btn btn-outline-info btn-sm action-btn edit" id="edit{{$room->id}}"><i class="fas fa-edit"></i></a>
 
-                                                    <a href="#" id_to_del='{{$hotel->id}}' class="btn delperm btn-outline-danger btn-sm action-btn delete" id="delete{{$hotel->id}}"><i class="fas fa-trash-alt"></i></a>
-                                                    {{ Form::open(array('method' => 'DELETE', 'route' => array('hotels.destroy', $hotel->id), 'id' => 'del_'.$hotel->id, 'name' => 'del_'.$hotel->id)) }}
-                                                    {{ Form::close() }}
+                                                        <a href="#" id_to_del='{{$room->id}}' class="btn delperm btn-outline-danger btn-sm action-btn delete" id="delete{{$room->id}}"><i class="fas fa-trash-alt"></i></a>
+                                                        {{ Form::open(array('method' => 'DELETE', 'route' => array('rooms.destroy', $room->id), 'id' => 'del_'.$room->id, 'name' => 'del_'.$room->id)) }}
+                                                        {{ Form::close() }}
+                                                    @endif
 
 
 
@@ -68,7 +83,7 @@
                                 </div>
                                 <!-- /.table-responsive -->
                             @else
-                                <p>{{trans('web.sinhotels')}}</p>
+                                <p>{{trans('web.sinrooms')}}</p>
                             @endif
                         </div>
                     </div>

@@ -43,7 +43,6 @@ class HotelController extends Controller
     public function store(CreateHotel $request)
     {
         $hotel = Hotel::create($request->all());
-        Session::flash('flash','Message info');
 
         return redirect()->route('hotels.index')
             ->with('success', trans("web.created_ok"));

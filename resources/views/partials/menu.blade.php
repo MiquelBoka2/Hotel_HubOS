@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm admin_menu">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
@@ -13,7 +13,8 @@
                 @auth
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('hotels.index') }}">{{ __('Hotels') }}</a>
+                    <a class="nav-link" href="{{ route('hotels.index') }}">{{ trans_choice('web.hotel',2) }}</a>
+                    <a class="nav-link" href="{{ route('rooms.index') }}">{{ trans_choice('web.room',2) }}</a>
                 </li>
                 @endauth
 
