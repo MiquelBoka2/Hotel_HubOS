@@ -19,5 +19,13 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456'),
             'user_type_id' => 1
         ]);
+
+        //API user
+        DB::table('users')->insert([
+            'name' => "api",
+            'email' => 'api@mail.com',
+            'password' => Hash::make('123456'),
+            'user_type_id' => 2
+        ]);
     }
 }
