@@ -36,7 +36,11 @@ return [
 
 
     'hotel'         => 'Hotel|Hotels',
+    'no_hotels'     => 'There are no hotels',
     'room'          => 'Room|Rooms',
+    'no_rooms'      => 'There are no rooms',
+    'reservation'   => 'Reservation|Reservations',
+    'no_reservations' => 'There are no reservations',
 
     'id'            => 'ID',
     'name'          => 'Name',
@@ -53,6 +57,9 @@ return [
     'free'          => 'Free',
     'occupied'      => 'Occupied',
 
-
+    'guest'         => 'Guest',
+    'checkin'       => 'Checkin',
+    'checkout'      => 'Checkout',
+    'pending'       => 'Pending'
 
 ];

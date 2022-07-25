@@ -68,7 +68,7 @@
                                 </div>
                                 <!-- /.table-responsive -->
                             @else
-                                <p>{{trans('web.sinhotels')}}</p>
+                                <p>{{trans('web.no_hotels')}}</p>
                             @endif
                         </div>
                     </div>

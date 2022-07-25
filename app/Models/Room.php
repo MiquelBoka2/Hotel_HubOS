@@ -17,4 +17,7 @@ class Room extends Model
     public function hotel(){
         return $this->belongsTo('App\Models\Hotel');
     }
+    public function reservations(){
+        return $this->hasMany('\App\Models\Reservation');
+    }
 }

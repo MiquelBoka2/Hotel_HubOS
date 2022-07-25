@@ -59,7 +59,9 @@
                                                     {{$status[$room->status]}}
                                                 </td>
                                                 <td>
-                                                    @if($hotel_id > 0)
+                                                    <a href="{{route('reservations.index', array('room_id'=>$room->id))}}"  class="btn btn-outline-success btn-sm action-btn edit" id="reservations{{$room->id}}">{{trans_choice('web.reservation',2)}}</a>
+
+                                                @if($hotel_id > 0)
                                                         <a href="{{route('rooms.edit_hotel', array('id'=>$room->id,'hotel_id'=>$hotel_id))}}"  class="btn btn-outline-info btn-sm action-btn edit" id="edit{{$room->id}}"><i class="fas fa-edit"></i></a>
 
                                                         <a href="#" id_to_del='{{$room->id}}' class="btn delperm btn-outline-danger btn-sm action-btn delete" id="delete{{$room->id}}"><i class="fas fa-trash-alt"></i></a>
@@ -83,7 +85,7 @@
                                 </div>
                                 <!-- /.table-responsive -->
                             @else
-                                <p>{{trans('web.sinrooms')}}</p>
+                                <p>{{trans('web.no_rooms')}}</p>
                             @endif
                         </div>
                     </div>
